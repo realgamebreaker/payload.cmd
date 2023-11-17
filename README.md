@@ -6,4 +6,5 @@ This payload expects to be run with administrator permissions
 
 # Package.zip
 
-# Replace the ```https://example.com/package.zip``` with a url to your client.cmd
+# Replace the ```js
+https://example.com/package.zip``` with a url to your client.cmd
