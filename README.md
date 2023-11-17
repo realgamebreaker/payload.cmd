@@ -8,6 +8,6 @@ This payload expects to be run with administrator permissions
 
 # Replace the
 ```sh
-$ https://example.com/package.zip
+https://example.com/package.zip
 ```
 with a url to your client.cmd
